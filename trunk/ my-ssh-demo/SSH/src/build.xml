@@ -66,7 +66,7 @@
 
     <!-- Normal build of application -->
     <target name="compile" depends="prepare,resources">
-        <javac srcdir="src" destdir="classes">
+        <javac srcdir="src" destdir="WEB-INF/classes">
             <classpath refid="compile.classpath"/>
         </javac>
     </target>
