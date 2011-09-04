@@ -52,8 +52,8 @@
 
     <!-- Copy any resource or configuration files -->
     <target name="resources">
-        <copy todir="classes" includeEmptyDirs="no">
-            <fileset dir="src/java">
+        <copy todir="WEB-INF/classes" includeEmptyDirs="no">
+            <fileset dir="src">
             <patternset>
                 <include name="**/*.conf"/>
                 <include name="**/*.properties"/>
@@ -66,7 +66,7 @@
 
     <!-- Normal build of application -->
     <target name="compile" depends="prepare,resources">
-        <javac srcdir="src/java" destdir="classes">
+        <javac srcdir="src" destdir="classes">
             <classpath refid="compile.classpath"/>
         </javac>
     </target>
@@ -75,8 +75,8 @@
     <!-- Remove classes directory for clean build -->
     <target name="clean"
       description="Prepare for clean build">
-      <delete dir="classes"/>
-      <mkdir  dir="classes"/>
+      <delete dir="WEB-INF/classes"/>
+      <mkdir  dir="WEB-INF/classes"/>
     </target>
 
 
@@ -85,7 +85,7 @@
      description="Generate JavaDoc API docs">
         <delete dir="./doc/api"/>
         <mkdir dir="./doc/api"/>
-        <javadoc sourcepath="./src/java"
+        <javadoc sourcepath="./src"
             destdir="./doc/api"
             classpath="${servlet.jar}"
             packagenames="*"
